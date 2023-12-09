@@ -1,12 +1,12 @@
 # Install and load necessary packages
-install.packages(c("rpart", "caret"))
+
 library(rpart)
 library(caret)
 
 # Read the training dataset
-train_data <- read.csv("dt_realestate_train_2022.csv", header = TRUE, sep= ';') 
+train_data <- read.csv("data/dt_realestate_train_2022.csv", header = TRUE, sep= ',') 
 
-test_data <- read.csv("dt_realestate_test_2022.csv", header = TRUE, sep= ';')
+test_data <- read.csv("data/dt_realestate_test_2022.csv", header = TRUE, sep= ',')
 
 
 
