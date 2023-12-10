@@ -65,14 +65,14 @@ confusionMatrix(table(pred_test,real_estate_test$price_category))
 
 
 #NOW MAKE PREDICITON ON THE PREDICICTION DATA
-pred_test <- predict(model, newdata = prediction_data, type= "class")
-pred_test
+test_predictions <- predict(model, newdata = prediction_data, type= "class")
+test_predictions
 
 #GETTING DESIRED OUTPUT FOR KAGGLE
-result_df <- data.frame(id = prediction_data$id, price_category = prediction_data)
+result_df <- data.frame(id = prediction_data$id, price_category = test_predictions)
 
 # Save the results to a CSV file
-write.csv(result_df, file = "random_forest.csv", row.names = FALSE)
+write.csv(result_df, file = "rf_model.csv", row.names = FALSE)
 
 
 
