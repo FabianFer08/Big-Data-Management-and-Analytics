@@ -244,3 +244,49 @@ result_df <- data.frame(id = prediction_data$id, price_category = test_predictio
 
 # Save the results to a CSV file
 write.csv(result_df, file = "v2_d_tree_tunned_3FOLDS.csv", row.names = FALSE)
+
+
+
+
+
+
+### -------------------------- ### -------------------------- ### -------------------------- ### -------------------------- ###
+
+# Get variable importance measures
+variable_importance <- getFeatureImportance(best_model_multi)
+
+# Print the variable importance
+print(variable_importance)
+
+str(variable_importance)
+
+
+
+
+# Extracting importance values and variable names
+importance_values <- variable_importance$res$importance
+variable_names <- variable_importance$res$variable
+
+# Combine into a data frame
+importance_df <- data.frame(Variable = variable_names, Importance = importance_values)
+
+# Print the variable importance
+print(importance_df)
+
+# Plot variable importance using dotplot
+library(lattice)
+
+# Create a dotplot
+plot2 <- dotplot(Importance ~ Variable, data = importance_df,
+                 main = "Var Importance Plot",
+                 xlab = "Importance", ylab = "Variable",
+                 col = "skyblue", cex = 0.7,
+                 scales = list(x = list(rot = 45, cex = 0.8)))
+
+png("variable_importance_plot.png", width = 800, height = 600)
+
+
+
+dev.off()
+print(plot2)
+
